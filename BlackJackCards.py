@@ -37,6 +37,7 @@ class BlackJackHand(Hand):
         return total
 
     def isBust(self):
+
         return self.getTotal()> 21
 
 class BlackJackDeck(Deck):
@@ -50,19 +51,23 @@ class BlackJackDeck(Deck):
                 self.addCard(BlackJackCard(rank, suit))
 
 
-class BlackJackPlayer(object):
+class BlackJackPlayer(BlackJackHand):
     def __init__(self, name):
+        super(BlackJackPlayer, self).__init__()
         self.name = name
-        self.hand = BlackJackHand()
-        self.isPlaying = True
+
+
+    def __str__(self):
+        return str(self.name)+ ": " + super(BlackJackPlayer, self).__str__()
+
+
     @staticmethod
     def getName():
         return input("Players Name: ")
 
 
-class BlackJackDealer(BlackJackPlayer):
-    def __init__(self):
-        super(BlackJackDealer, self).__init__("Dealer")
+
+
 
 
 
