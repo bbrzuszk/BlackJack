@@ -67,4 +67,3 @@ class Deck(Hand):
                     self.giveCard(self.cards[0], hand)
                 else:
                     break
-

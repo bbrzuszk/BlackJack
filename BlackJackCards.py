@@ -1,12 +1,13 @@
 from Cards import *
 
 class BlackJackCard(Card):
-    def __init(self, rank, suit, isFaceUp = True):
-        super(BlackJackCard, self).__init(rank, suit, isFaceUp)
+    def __init__(self, rank, suit, isFaceUp = True):
+        super().__init__(rank, suit, isFaceUp)
         self.value = self.__setValue()
 
+
     def __setValue(self):
-        for i in range(Card.RANKS):
+        for i in range(len(Card.RANKS)):
             if self.rank == Card.RANKS[i]:
                 if i < 10:
                     return i + 1
@@ -15,6 +16,11 @@ class BlackJackCard(Card):
 
 
 class BlackJackHand(Hand):
+
+
+    def addCard(self, card):
+        super().addCard(card)
+        self.getTotal()
 
     def getTotal(self):
         hasAce = False
@@ -49,6 +55,14 @@ class BlackJackPlayer(object):
         self.name = name
         self.hand = BlackJackHand()
         self.isPlaying = True
+    @staticmethod
+    def getName():
+        return input("Players Name: ")
+
+
+class BlackJackDealer(BlackJackPlayer):
+    def __init__(self):
+        super(BlackJackDealer, self).__init__("Dealer")
 
 
 

@@ -1,10 +1,10 @@
 from BlackJackCards import *
 
-deck = BlackJackDeck()
-hands = []
-for i in range(3):
-    hands.append(Hand())
+numPlayers = int(input("How many players"))
+players = []
+for i in range(numPlayers):
+    players.append(BlackJackPlayer(BlackJackPlayer.getName()))
 
-deck.dealCard(hands, 4)
-for hand in hands:
-    print(hand)
+dealer = BlackJackDealer()
+deck = BlackJackDeck()
+
